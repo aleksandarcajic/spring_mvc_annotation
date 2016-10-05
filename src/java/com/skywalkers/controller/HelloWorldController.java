@@ -29,11 +29,22 @@ public class HelloWorldController {
     /**
      * Default method
      * @param model
-     * @return 
+     * @return String
      */
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(ModelMap model) {        
         model.addAttribute("greeting", greetingService.getGreeting());
         return "welcome";
+    }
+    
+    /**
+     * Say again, hello
+     * @param model
+     * @return String
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/sayAgain")
+    public String sayAgain(ModelMap model) {
+        model.addAttribute("greeting", greetingService.getAdditional());
+        return "again/welcomeAgain";
     }
 }
