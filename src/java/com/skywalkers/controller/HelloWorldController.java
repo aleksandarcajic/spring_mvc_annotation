@@ -45,6 +45,7 @@ public class HelloWorldController {
     @RequestMapping(method = RequestMethod.GET, value = "/sayAgain")
     public String sayAgain(ModelMap model) {
         model.addAttribute("greeting", greetingService.getAdditional());
-        return "again/welcomeAgain";
+        return "welcome";
+        //return "again/welcomeAgain"; // use different view, under separate folder
     }
 }
