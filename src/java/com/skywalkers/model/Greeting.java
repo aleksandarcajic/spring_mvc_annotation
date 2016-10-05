@@ -5,11 +5,15 @@
  */
 package com.skywalkers.model;
 
+import java.io.Serializable;
+
 /**
- *
+ * Greetings model
  * @author Aleksandar
  */
-public class Greeting {
+public class Greeting implements Serializable {
+
+    private static final long serialVersionUID = 6882407297826273417L;
     
     private String text;
     private String additionalText;
@@ -38,7 +42,5 @@ public class Greeting {
     public void setYear(Integer year) {
         this.year = year;
     }
-    
-    
-    
+        
 }

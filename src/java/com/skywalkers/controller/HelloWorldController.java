@@ -5,29 +5,35 @@
  */
 package com.skywalkers.controller;
 
-import com.skywalkers.model.Greeting;
+import com.skywalkers.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- *
+ * Hello world controller
  * @author Aleksandar
  */
 @Controller
 @RequestMapping("/")
 public class HelloWorldController {
     
+    /**
+     * Greeting service
+     */
+    @Autowired
+    GreetingService greetingService;
+    
+    /**
+     * Default method
+     * @param model
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.GET)
-    public String sayHello(ModelMap model) {
-        
-        Greeting myGreeting = new Greeting();
-        myGreeting.setText("Test greeting!!!");
-        myGreeting.setAdditionalText("Additional greeting text!!!");
-        myGreeting.setYear(2016);
-        
-        model.addAttribute("greeting", myGreeting);
+    public String sayHello(ModelMap model) {        
+        model.addAttribute("greeting", greetingService.getGreeting());
         return "welcome";
     }
 }
